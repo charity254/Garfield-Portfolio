@@ -209,3 +209,111 @@ body {
      6px 18px 0 rgba(0, 0, 0, 0.1),
      8px 24px 0 rgba(0, 0, 0, 0.05);
 }
+
+/* === RESPONSIVE DESIGN === */
+/* Responsive adjustments */
+
+/* Medium screens (tablets, small laptops) */
+@media (max-width: 900px) {
+  .hero-img {
+    width: 70vw; /* Increase image width to better fit smaller screens */
+    max-width: none;
+  }
+
+  .typing-text {
+    font-size: 40px; /* Smaller heading */
+  }
+
+  .bottom-right {
+    font-size: 1.5rem;
+    max-width: 180px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .typing-container {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .navbar {
+    top: 15px;
+    right: 20px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .nav-links li a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small screens (phones) */
+@media (max-width: 600px) {
+  .hero-img {
+    position: relative; /* Remove absolute centering */
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 90vw;
+    max-width: none;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .hero-container {
+    height: auto; /* Allow container height to grow */
+    padding: 2rem 1rem 5rem; /* Add bottom padding for text */
+  }
+
+  .typing-text {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .typing-container {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .bottom-right {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    max-width: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .bottom-left {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .navbar {
+    position: relative;
+    top: auto;
+    right: auto;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links li a {
+    font-size: 1.1rem;
+  }
+}
