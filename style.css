@@ -573,3 +573,19 @@ body.no-scroll {
   display: none;
   z-index: 1002;
 }
+@media (max-width: 768px) {
+  .contact-info {
+    background-color: rgba(255, 255, 255, 0.6); /* translucent white */
+    backdrop-filter: blur(8px);                 /* optional blur effect */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    max-width: 90%;
+    position: static;              /* remove absolute positioning on mobile */
+    transform: none;
+    top: auto;
+    right: auto;
+    text-align: left;
+  }
+}
