@@ -164,7 +164,7 @@ body {
   width: 0;
   border-right: 2px solid white;
   animation:
-    typing1 2s steps(8) forwards,
+    typing1 1s steps(8) forwards,
     remove-cursor1 0s 2s forwards;
 }
 
@@ -173,7 +173,7 @@ body {
   width: 0;
   border-right: 2px solid white;
   animation:
-    typing2 2.5s steps(11) forwards 2.5s,
+    typing2 1s steps(11) forwards 2.5s,
     remove-cursor2 0s 5s forwards;
 }
 
@@ -210,4 +210,60 @@ body {
      8px 24px 0 rgba(0, 0, 0, 0.05);
 }
 
+.fade-in-text {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
 
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Slight upward slide */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-body {
+  background-image: url("images/contact.jpg"); /* ✅ Replace with your image path */
+  background-size: cover;        /* Ensures it fills the screen */
+  background-position: center;   /* Keeps it centered */
+  background-repeat: no-repeat;  /* Prevents repeating */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-info {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  text-align: left;             /* Aligns content to the left */
+  font-size: 1.2rem;
+  color: #000;
+  line-height: 2;
+  font-weight: 500;
+  max-width: 300px;
+}
+
+.contact-info p {
+  margin-bottom: 1.2rem;
+}
+
+.contact-info a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: #808080;               /* Mustard hover color */
+  text-decoration: underline;
+}
