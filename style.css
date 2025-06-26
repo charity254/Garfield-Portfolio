@@ -471,3 +471,42 @@ body.no-scroll {
     column-count: 1;
   }
 }
+
+.experience-body {
+  background-color: #fcb001; /* Dark yellow */
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+
+}
+
+/* experience image*/
+.hero-img-exp {
+  position: absolute;
+  top: 60%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  max-width: 600px;
+  height: auto;
+}
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  
+}
+.experience-text {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  transform: translateY(-50%);
+  color: rgb(19, 18, 18);
+  max-width: 40%;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 2s ease-in-out forwards;
+  opacity: 10;
+}
