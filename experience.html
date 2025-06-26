@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Garfield | Photographer</title>
+  <title>Experience | Garfield</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
@@ -12,18 +12,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="experience-body">
-  <!-- NAVBAR -->
- <nav class="nav">
-  <ul class="nav-menu">
-    <li><a href="index.html#experience">Home</a></li>
-    <li><a href="experience.html#experience">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html#contact">Contact</a></li>
-    <li><a href="gallery.html#gallery">Gallery</a></li>
-  </ul>
-  <button class="nav-toggle">&#9776;</button>
-</nav>
 
+  <!-- Load shared navbar -->
+  <div id="navbar-placeholder"></div>
 
   <div class="hero-container">
     <div class="experience-text">
@@ -31,21 +22,14 @@
       <p>Present</p>
       <p>Freelance Photographer | Events & Portraits</p>
       <h2>Podcast Host</h2>
-      <p>21 Odyssey</p>
+      <p><em>21 Odyssey</em></p>
       <h2>Founder & Creative Director</h2>
-      <p><em>Vena AmoRis Afrika(V.A.A)</em></p>
+      <p><em>Vena AmoRis Afrika (V.A.A)</em></p>
     </div>
 
     <img src="images/exp.png" alt="Garfield cutout" class="hero-img-exp">
   </div>
-  <script>
-  const toggle = document.querySelector('.nav-toggle');
-  const menu = document.querySelector('.nav-menu');
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-  });
-</script>
 
+  <script src="script.js"></script>
 </body>
-
 </html>

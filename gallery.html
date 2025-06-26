@@ -13,24 +13,15 @@
 </head>
 <body class="gallery-body">
 
-  <!-- NAVBAR -->
-<nav class="nav">
-  <ul class="nav-menu">
-    <li><a href="index.html#experience">Home</a></li>
-    <li><a href="experience.html#experience">Experience</a></li>
-    <li><a href="projects.html">Projects</a></li>
-    <li><a href="contact.html#contact">Contact</a></li>
-    <li><a href="gallery.html#gallery">Gallery</a></li>
-  </ul>
-  <button class="nav-toggle">&#9776;</button>
-</nav>
+  <!-- Load shared navbar -->
+  <div id="navbar-placeholder"></div>
 
-
+  <!-- Vignette effect -->
   <div class="vignette"></div>
 
   <!-- GALLERY CONTENT -->
   <div class="gallery-container">
-    <h1 class="gallery-title">Gallery</h1>
+    <h1 class="gallery-title"></h1>
 
     <div class="gallery-grid">
       <div class="gallery-item">
@@ -99,98 +90,20 @@
 
   <button id="next-btn" class="nav-btn right">&#10095;</button>
 </div>
-<script>
-  const galleryItems = document.querySelectorAll('.gallery-item img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const nextBtn = document.getElementById('next-btn');
-  const prevBtn = document.getElementById('prev-btn');
-  const closeBtn = document.getElementById('close-btn');
 
-  let currentIndex = 0;
-  const images = Array.from(galleryItems).map(img => img.src);
+  <!-- Lightbox -->
+  <!--<div id="lightbox" class="lightbox hidden">
+    <button id="close-btn" class="close-btn">&times;</button>
+    <button id="prev-btn" class="nav-btn left">&#10094;</button>
 
-  function showImage(index) {
-    lightboxImg.src = images[index];
-  }
-  const zoomLens = document.getElementById('zoom-lens');
-const zoomContainer = document.querySelector('.zoom-container');
+    <div class="zoom-container">
+      <img id="lightbox-img" src="" alt="Enlarged Image">
+      <div id="zoom-lens"></div>
+    </div>
 
-lightboxImg.addEventListener('mousemove', (e) => {
-  const rect = lightboxImg.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
+    <button id="next-btn" class="nav-btn right">&#10095;</button>
+  </div> -->
 
-  const lensSize = zoomLens.offsetWidth / 2;
-
-  let lensX = x - lensSize;
-  let lensY = y - lensSize;
-
-  // Keep lens inside bounds
-  lensX = Math.max(0, Math.min(lensX, rect.width - lensSize * 2));
-  lensY = Math.max(0, Math.min(lensY, rect.height - lensSize * 2));
-
-  zoomLens.style.left = lensX + 'px';
-  zoomLens.style.top = lensY + 'px';
-  zoomLens.style.display = 'block';
-  zoomLens.style.backgroundImage = `url('${lightboxImg.src}')`;
-  zoomLens.style.backgroundSize = lightboxImg.width * 2 + 'px ' + lightboxImg.height * 2 + 'px';
-  zoomLens.style.backgroundPosition = `-${x * 2 - lensSize}px -${y * 2 - lensSize}px`;
-});
-
-lightboxImg.addEventListener('mouseleave', () => {
-  zoomLens.style.display = 'none';
-});
-
-
-  galleryItems.forEach((img, index) => {
-    img.addEventListener('click', () => {
-      currentIndex = index;
-      showImage(currentIndex);
-      lightbox.classList.remove('hidden');
-      document.body.classList.add('no-scroll');
-    });
-  });
-
-  nextBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  });
-
-  prevBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  });
-
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.add('hidden');
-    document.body.classList.remove('no-scroll');
-  });
-
-  // Close on Esc key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox.classList.add('hidden');
-      document.body.classList.remove('no-scroll');
-    } else if (e.key === 'ArrowRight') {
-      currentIndex = (currentIndex + 1) % images.length;
-      showImage(currentIndex);
-    } else if (e.key === 'ArrowLeft') {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      showImage(currentIndex);
-    }
-  });
-
-  const toggle = document.querySelector('.nav-toggle');
-  const menu = document.querySelector('.nav-menu');
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('open');
-  });
-
-</script>
-
-
+  <script src="script.js"></script>
 </body>
 </html>
