@@ -1,30 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gallery | Garfield</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="gallery-body">
 
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+  <div class="vignette"></div>
+
+  <!-- GALLERY CONTENT -->
   <div class="gallery-container">
     <h1 class="gallery-title">Gallery</h1>
 
     <div class="gallery-grid">
-      <!-- Repeat these image blocks -->
       <div class="gallery-item">
-        <img src="images/gallery1.jpg" alt="Gallery Image 1">
+        <img src="images/gallery/1.jpg" alt="Gallery Image 1">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery2.jpg" alt="Gallery Image 2">
+        <img src="images/gallery/2.jpg" alt="Gallery Image 2">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery3.jpg" alt="Gallery Image 3">
+        <img src="images/gallery/3.jpg" alt="Gallery Image 3">
       </div>
-      <!-- Add as many as you want -->
+      <div class="gallery-item">
+        <img src="images/gallery/4.jpg" alt="Gallery Image 4">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/5.jpg" alt="Gallery Image 5">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/6.jpg" alt="Gallery Image 6">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/7.jpeg" alt="Gallery Image 7">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/8.jpeg" alt="Gallery Image 8">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/9.jpeg" alt="Gallery Image 9">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/10.jpeg" alt="Gallery Image 10">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/11.jpeg" alt="Gallery Image 11">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/12.jpeg" alt="Gallery Image 12">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/13.jpeg" alt="Gallery Image 13">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/14.jpeg" alt="Gallery Image 14">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/15.jpeg" alt="Gallery Image 15">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery/16.jpeg" alt="Gallery Image 16">
+      </div>
     </div>
   </div>
+  <div id="lightbox" class="lightbox hidden">
+  <button id="close-btn" class="close-btn">&times;</button>
+  <button id="prev-btn" class="nav-btn left">&#10094;</button>
+ <div class="zoom-container">
+  <img id="lightbox-img" src="" alt="Enlarged Image">
+  <div id="zoom-lens"></div>
+</div>
+
+  <button id="next-btn" class="nav-btn right">&#10095;</button>
+</div>
+<script>
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const nextBtn = document.getElementById('next-btn');
+  const prevBtn = document.getElementById('prev-btn');
+  const closeBtn = document.getElementById('close-btn');
+
+  let currentIndex = 0;
+  const images = Array.from(galleryItems).map(img => img.src);
+
+  function showImage(index) {
+    lightboxImg.src = images[index];
+  }
+  const zoomLens = document.getElementById('zoom-lens');
+const zoomContainer = document.querySelector('.zoom-container');
+
+lightboxImg.addEventListener('mousemove', (e) => {
+  const rect = lightboxImg.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  const lensSize = zoomLens.offsetWidth / 2;
+
+  let lensX = x - lensSize;
+  let lensY = y - lensSize;
+
+  // Keep lens inside bounds
+  lensX = Math.max(0, Math.min(lensX, rect.width - lensSize * 2));
+  lensY = Math.max(0, Math.min(lensY, rect.height - lensSize * 2));
+
+  zoomLens.style.left = lensX + 'px';
+  zoomLens.style.top = lensY + 'px';
+  zoomLens.style.display = 'block';
+  zoomLens.style.backgroundImage = `url('${lightboxImg.src}')`;
+  zoomLens.style.backgroundSize = lightboxImg.width * 2 + 'px ' + lightboxImg.height * 2 + 'px';
+  zoomLens.style.backgroundPosition = `-${x * 2 - lensSize}px -${y * 2 - lensSize}px`;
+});
+
+lightboxImg.addEventListener('mouseleave', () => {
+  zoomLens.style.display = 'none';
+});
+
+
+  galleryItems.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      lightbox.classList.remove('hidden');
+      document.body.classList.add('no-scroll');
+    });
+  });
+
+  nextBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  });
+
+  prevBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+    document.body.classList.remove('no-scroll');
+  });
+
+  // Close on Esc key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      lightbox.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    } else if (e.key === 'ArrowRight') {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    } else if (e.key === 'ArrowLeft') {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+  });
+</script>
+
 
 </body>
 </html>
